@@ -9,6 +9,16 @@ local ZoneModule = require(ReplicatedStorage.Modules.Zone)
 local TeleportZones = game.Workspace:WaitForChild("TeleportZones")
 local Configuration = TeleportZones.Configuration
 
+function JoinParty(Plr,ZoneContainer)
+	local Char = Plr.Character or Plr.CharacterAdded:Wait()
+	local RootPart = Char:WaitForChild("HumanoidRootPart")
+	RootPart.CFrame = ZoneContainer.CFrame
+end
+
+function LeaveParty()
+	
+end
+
 for _, TpZones in pairs(TeleportZones:GetChildren()) do
 	if TpZones:IsA("Model") then
 
@@ -20,14 +30,7 @@ for _, TpZones in pairs(TeleportZones:GetChildren()) do
 		local Zone = ZoneModule.new(ZoneContainer)
 
 		Zone.playerEntered:Connect(function(Plr)
-			local Char = Plr.Character or Plr.CharacterAdded:Wait()
-			local RootPart = Char:WaitForChild("HumanoidRootPart")
-
-			RootPart.CFrame = ZoneContainer.CFrame
-		end)
-
-		Zone.playerExited:Connect(function(Plr)
-			-- optional (kept empty like your working version)
+			JoinParty(Plr,ZoneContainer)
 		end)
 	end
 end
