@@ -8,6 +8,7 @@ local ZoneModule = require(ReplicatedStorage.Modules.Zone)
 --// Objects
 local TeleportZones = game.Workspace:WaitForChild("TeleportZones")
 local Configuration = TeleportZones.Configuration
+local QueueRemote = ReplicatedStorage.Remotes.QueueRemote
 
 --// Modules
 local ZoneData = {}
@@ -15,6 +16,7 @@ local ZoneData = {}
 function JoinParty(Plr,ZoneContainer,TpZones)
 	-- Add player to the lists
 	table.insert(ZoneData[TpZones]["Players"],Plr)
+	QueueRemote:FireClient(Plr,"JoinParty")
 	-- Tp Character into box
 	local Char = Plr.Character or Plr.CharacterAdded:Wait()
 	local RootPart = Char:WaitForChild("HumanoidRootPart")
