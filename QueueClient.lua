@@ -2,7 +2,7 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
 
---// Player Stuffs
+--// Player Stuffs here
 local Plr = game.Players.LocalPlayer
 local PartyUi = Plr.PlayerGui:WaitForChild("PartyUi")
 
