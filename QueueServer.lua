@@ -26,10 +26,10 @@ end
 function LeaveParty(Plr,LobbyPos,TpZones)
 	-- Remove player from the lists
 	table.remove(ZoneData[TpZones]["Players"],table.find(ZoneData[TpZones]["Players"],Plr)
-	-- Tp Character out of box
-	local Char = Plr.Character or Plr.CharacterAdded:Wait()
-	local RootPart = Char:WaitForChild("HumanoidRootPart")
-	RootPart.CFrame = TeleportZones.LobbyPos.CFrame
+		-- Tp Character out of box
+		local Char = Plr.Character or Plr.CharacterAdded:Wait()
+		local RootPart = Char:WaitForChild("HumanoidRootPart")
+		RootPart.CFrame = TeleportZones.LobbyPos.CFrame
 end
 
 for _, TpZones in pairs(TeleportZones:GetChildren()) do
@@ -49,7 +49,7 @@ for _, TpZones in pairs(TeleportZones:GetChildren()) do
 		local Zone = ZoneModule.new(ZoneContainer)
 
 		Zone.playerEntered:Connect(function(Plr)
-			JoinParty(Plr,ZoneContainer)
+			JoinParty(Plr,ZoneContainer,TpZones)
 		end)
 	end
 end
