@@ -19,7 +19,7 @@ function JoinParty(Plr,ZoneContainer,TpZones)
 	QueueRemote:FireClient(Plr,"JoinParty")
 	-- Button function
 	local PartyUi = Plr.PlayerGui.PartyUi
-	PartyUi.Inparty.LeaveButton.MouseButton1Down:Connect(function()
+	PartyUi.InParty.LeaveButton.MouseButton1Down:Connect(function()
 		LeaveParty(Plr,TpZones)
 	end)
 	-- Tp Character into box
