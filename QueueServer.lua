@@ -25,7 +25,7 @@ end
 
 function LeaveParty(Plr,LobbyPos,TpZones)
 	-- Remove player from the lists
-	table.remove(ZoneData[TpZones]["Players"],table.find(ZoneData[TpZones]["Players"],Plr)
+	table.remove(ZoneData[TpZones]["Players"],table.find(ZoneData[TpZones]["Players"],Plr))
 		-- Tp Character out of box
 		local Char = Plr.Character or Plr.CharacterAdded:Wait()
 		local RootPart = Char:WaitForChild("HumanoidRootPart")
