@@ -17,19 +17,24 @@ function JoinParty(Plr,ZoneContainer,TpZones)
 	-- Add player to the lists
 	table.insert(ZoneData[TpZones]["Players"],Plr)
 	QueueRemote:FireClient(Plr,"JoinParty")
+	-- Button function
+	local PartyUi = Plr.PlayerGui.PartyUi
+	PartyUi.Inparty.LeaveButton.MouseButton1Down:Connect(function()
+		LeaveParty(Plr,TpZones)
+	end)
 	-- Tp Character into box
 	local Char = Plr.Character or Plr.CharacterAdded:Wait()
 	local RootPart = Char:WaitForChild("HumanoidRootPart")
 	RootPart.CFrame = ZoneContainer.CFrame
 end
 
-function LeaveParty(Plr,LobbyPos,TpZones)
+function LeaveParty(Plr,TpZones)
 	-- Remove player from the lists
 	table.remove(ZoneData[TpZones]["Players"],table.find(ZoneData[TpZones]["Players"],Plr))
-		-- Tp Character out of box
-		local Char = Plr.Character or Plr.CharacterAdded:Wait()
-		local RootPart = Char:WaitForChild("HumanoidRootPart")
-		RootPart.CFrame = TeleportZones.LobbyPos.CFrame
+	-- Tp Character out of box
+	local Char = Plr.Character or Plr.CharacterAdded:Wait()
+	local RootPart = Char:WaitForChild("HumanoidRootPart")
+	RootPart.CFrame = TeleportZones.LobbyPos.CFrame
 end
 
 for _, TpZones in pairs(TeleportZones:GetChildren()) do
