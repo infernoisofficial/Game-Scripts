@@ -25,7 +25,7 @@ function JoinParty(Plr, ZoneContainer, TpZones)
 		LeaveParty(Plr, TpZones)
 	end)
 
-	-- Teleport player into zone
+	-- Teleport player into zone 🏃‍♂️‍➡️
 	local Char = Plr.Character or Plr.CharacterAdded:Wait()
 	local RootPart = Char:WaitForChild("HumanoidRootPart")
 
@@ -45,13 +45,13 @@ function LeaveParty(Plr, TpZones)
 
 	QueueRemote:FireClient(Plr, "LeaveParty")
 
-	-- Teleport player out
+	-- Teleport player out 🏃‍♂️‍➡️
 	local Char = Plr.Character or Plr.CharacterAdded:Wait()
 	local RootPart = Char:WaitForChild("HumanoidRootPart")
 	RootPart.CFrame = TeleportZones.LobbyPos.CFrame
 end
 
---// Main Loop
+--// ➿ Main Loop
 for _, TpZones in pairs(TeleportZones:GetChildren()) do
 	if TpZones:IsA("Model") then
 
